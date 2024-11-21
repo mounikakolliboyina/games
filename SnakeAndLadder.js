@@ -1,3 +1,10 @@
+const dice1 = "┏━━━━━━┓\n┃      ┃\n┃  ⚪️  ┃\n┃      ┃\n┗━━━━━━┛\n";
+const dice2 = "┏━━━━━━┓\n┃⚪️    ┃\n┃      ┃\n┃    ⚪️┃\n┗━━━━━━┛\n";
+const dice3 = "┏━━━━━━┓\n┃⚪️    ┃\n┃  ⚪️  ┃\n┃    ⚪️┃\n┗━━━━━━┛\n";
+const dice4 = "┏━━━━━━┓\n┃⚪️  ⚪️┃\n┃      ┃\n┃⚪️  ⚪️┃\n┗━━━━━━┛\n";
+const dice5 = "┏━━━━━━┓\n┃⚪️  ⚪️┃\n┃  ⚪️  ┃\n┃⚪️  ⚪️┃\n┗━━━━━━┛\n";
+const dice6 = "┏━━━━━━┓\n┃⚪️  ⚪️┃\n┃⚪️  ⚪️┃\n┃⚪️  ⚪️┃\n┗━━━━━━┛\n";
+
 console.log("-------------welcome to 🐍🐍snake and ladder game 🪜🪜-------------");
 
 const player1 = prompt("enter player 1 name");
@@ -73,13 +80,72 @@ function getCurrentPostion(randomNumber, playerPosition) {
   return isThereAnyThing(currentPostion);
 }
 
+function delay() {
+  for (let i = 0; i < 100000000; i++) {
+  }
+}
+
+function dice() {
+  console.clear();
+  console.log(dice1);
+  delay();
+  console.clear();
+  console.log(dice2);
+  delay();
+  console.clear();
+  console.log(dice3);
+  delay();
+  console.clear();
+  console.log(dice4);
+  delay();
+  console.clear();
+  console.log(dice5);
+  delay();
+  console.clear();
+  console.log(dice6);
+  delay();
+  console.clear();
+}
+
+function printCurrentDice(randomNumber) {
+  switch (randomNumber) {
+    case 1:
+      console.log(dice1);
+      break;
+    case 2:
+      console.log(dice2);
+      break;
+    case 3:
+      console.log(dice3);
+      break;
+    case 4:
+      console.log(dice4);
+      break;
+    case 5:
+      console.log(dice5);
+      break;
+    case 6:
+      console.log(dice6);
+      break;
+  }
+  return;
+}
+
 function rollDice(player) {
-  let randomNumber = Math.ceil(Math.random() * 6);
-  console.log(player + " Dice  " + randomNumber);
-  console.log();
+
+
   if (player === player1) {
+    prompt("it's " + player1 + " turn 🎲");
+    dice();
+    let randomNumber = Math.ceil(Math.random() * 6);
+    printCurrentDice(randomNumber);
+
     return getCurrentPostion(randomNumber, player1Position);
   }
+  prompt("it's " + player2 + " turn 🎲");
+  dice();
+  let randomNumber = Math.ceil(Math.random() * 6);
+  printCurrentDice(randomNumber);
 
   return getCurrentPostion(randomNumber, player2Position);
 }
@@ -89,11 +155,16 @@ function gameStart() {
   console.log(player1 + " : " + player1Position + "\t\t\t\t\t" + player2 + " : " + player2Position);
   console.log();
 
-  prompt("it's " + player1 + " turn 🎲");
+  // prompt("it's " + player1 + " turn 🎲");
   player1Position = rollDice(player1);
+  console.log(player1 + " current position : " + player1Position );
+  console.log();
 
-  prompt("it's " + player2 + " turn 🎲");
+  // prompt("it's " + player2 + " turn 🎲");
   player2Position = rollDice(player2);
+  console.log(player2 + " current position : " + player2Position);
+  console.log();
+
 
 
   if ((player1Position < 100 && player2Position < 100)) {
